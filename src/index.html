@@ -2,11 +2,32 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <title>Homework 11</title>
   </head>
+
   <body>
+    <div class="form-container">
+      <form class="search-form" id="search-form">
+        <input
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Пошук зображення"
+        />
+        <button type="submit" class="search-btn">Пошук</button>
+      </form>
+    </div>
+
+    <div class="gallery">
+      <!-- Картка зображення -->
+    </div>
+
+    <div class="btn-container">
+      <button type="button" class="load-more is-hidden">Шукати далі</button>
+    </div>
+
     <script type="module" src="./index.js"></script>
   </body>
 </html>
