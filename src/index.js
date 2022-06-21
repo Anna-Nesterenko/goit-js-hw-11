@@ -4,6 +4,11 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { newFetch, fetchLoadMoreBtnClick, imagesPerPage } from './js/api';
 import galleryCardsMarkup from './js/card';
+import {
+  getEmptySearchMessage,
+  getFoundImegesMessage,
+  getEndGellaryMessage,
+} from './js/notify_message';
 
 const refs = {
   form: document.querySelector('#search-form'),
@@ -27,7 +32,7 @@ async function onSearchPictures(e) {
     const searchTeg = e.currentTarget.elements.searchQuery.value.trim();
 
     if (!searchTeg) {
-      // getEmptySearchMessage();
+      getEmptySearchMessage();
       return;
     }
 
@@ -38,7 +43,7 @@ async function onSearchPictures(e) {
     renderGalleryCards(imegesGallery);
 
     if (foundPictures < 1) {
-      // getArrayEmptyMessage();
+      getEmptySearchMessage();
       refs.loadMoreBtn.classList.add('is-hidden');
       return;
     }
@@ -49,7 +54,7 @@ async function onSearchPictures(e) {
     ) {
       refs.loadMoreBtn.classList.toggle('is-hidden');
     }
-    //  getFoundImegesMessage(imegesGallery);
+    getFoundImegesMessage(imegesGallery);
     e.target.reset();
   } catch {
     err => console.log(err);
@@ -65,13 +70,12 @@ async function onLoadMorePictures() {
 
     refs.loadMoreBtn.classList.toggle('is-hidden');
     addGalleryCards(morePictures);
-    //  smoothScroll();
-
+    flowingScroll();
     page += 1;
 
     if (page >= foundPictures / imagesPerPage) {
       refs.loadMoreBtn.classList.toggle('is-hidden');
-      // getEndGellaryMessage();
+      getEndGellaryMessage();
     }
   } catch {
     err => console.log(err);
@@ -90,4 +94,15 @@ function addGalleryCards(arrayImages) {
   );
 
   gallery.refresh();
+}
+
+function flowingScroll() {
+  const { height: cardHeight } = document
+    .querySelector('.gallery')
+    .firstElementChild.getBoundingClientRect();
+
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth',
+  });
 }
