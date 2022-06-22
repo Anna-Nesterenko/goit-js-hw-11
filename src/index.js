@@ -37,27 +37,29 @@ async function onSearchPictures(e) {
     }
 
     const imegesGallery = await newFetch(searchTeg);
-
+    //  console.log(imegesGallery);
+    //  console.log(imagesPerPage);
     const foundPictures = imegesGallery.totalHits;
+    //  console.log(foundPictures);
 
     renderGalleryCards(imegesGallery);
 
     if (foundPictures < 1) {
       getEmptySearchMessage();
-      refs.loadMoreBtn.classList.add('is-hidden');
+      // refs.loadMoreBtn.classList.add('is-hidden');
       return;
     }
 
     if (
       refs.loadMoreBtn.classList.contains('is-hidden') &&
-      page <= foundPictures / imagesPerPage
+      foundPictures > imagesPerPage
     ) {
       refs.loadMoreBtn.classList.toggle('is-hidden');
     }
     getFoundImegesMessage(imegesGallery);
     e.target.reset();
   } catch {
-    err => console.log(err);
+    err => err;
   }
 }
 
@@ -78,7 +80,7 @@ async function onLoadMorePictures() {
       getEndGellaryMessage();
     }
   } catch {
-    err => console.log(err);
+    err => err;
   }
 }
 
