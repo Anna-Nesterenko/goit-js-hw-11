@@ -35,12 +35,8 @@ async function onSearchPictures(e) {
       getEmptySearchMessage();
       return;
     }
-    //  totalPages = Math.ceil(foundPictures / imagesPerPage);
     const imegesGallery = await newFetch(searchTeg);
-    //  console.log(imegesGallery);
-    //  console.log(imagesPerPage);
     const foundPictures = imegesGallery.totalHits;
-    //  console.log(foundPictures);
 
     renderGalleryCards(imegesGallery);
 
