@@ -35,7 +35,7 @@ async function onSearchPictures(e) {
       getEmptySearchMessage();
       return;
     }
-
+    //  totalPages = Math.ceil(foundPictures / imagesPerPage);
     const imegesGallery = await newFetch(searchTeg);
     //  console.log(imegesGallery);
     //  console.log(imagesPerPage);
@@ -59,7 +59,7 @@ async function onSearchPictures(e) {
     getFoundImegesMessage(imegesGallery);
     e.target.reset();
   } catch {
-    err => err;
+    err => console.log(err);
   }
 }
 
@@ -75,12 +75,12 @@ async function onLoadMorePictures() {
     flowingScroll();
     page += 1;
 
-    if (page >= foundPictures / imagesPerPage) {
+    if (page >= Math.ceil(foundPictures / imagesPerPage)) {
       refs.loadMoreBtn.classList.toggle('is-hidden');
       getEndGellaryMessage();
     }
   } catch {
-    err => err;
+    err => console.log(err);
   }
 }
 
