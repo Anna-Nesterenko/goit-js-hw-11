@@ -42,7 +42,7 @@ async function onSearchPictures(e) {
 
     if (foundPictures < 1) {
       getEmptySearchMessage();
-      refs.loadMoreBtn.classList.add('is-hidden');
+      // refs.loadMoreBtn.classList.add('is-hidden');
       return;
     }
 
