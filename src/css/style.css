@@ -13,7 +13,7 @@ form {
 .form-container {
   width: 100vw;
   height: 60px;
-  background: #ae9d9d;
+  background: linear-gradient(45deg, #eaeaea, rgba(174, 157, 157, 0.7));
   align-items: center;
   display: flex;
   position: fixed;
@@ -28,7 +28,13 @@ form {
   border: 3px solid #e06666;
   border-radius: 20px;
   outline: none;
-  background: #fff2cc;
+  font-size: 16px;
+  background: rgba(234, 234, 234, 0.7);
+}
+
+.search-form input::placeholder {
+  color: grey;
+  font-size: 14px;
 }
 
 .search-btn {
@@ -63,6 +69,16 @@ form {
 .load-more:hover,
 .search-btn:hover {
   background-color: #cc0000;
+  box-shadow: 0 0 10px #e06666, 0 0 20px #e06666, 0 0 40px #e06666;
+}
+.wrapper {
+  padding-left: 30px;
+}
+.wrapper-link {
+  color: black;
+}
+.wrapper-link:hover {
+  color: #cc0000;
 }
 
 .is-hidden {
